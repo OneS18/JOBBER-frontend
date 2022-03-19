@@ -1,11 +1,13 @@
-import logo from "../assets/images/logo.svg";
-import main from "../assets/images/main.svg";
+import main from "../assets/images/undraw_fitting_piece_re_pxay.svg";
+import Wrapper from "../assets/wrappers/LandingPage";
+import { Logo } from "../components";
+import { Link } from "react-router-dom";
 
 const Landing = () => {
   return (
-    <main>
+    <Wrapper>
       <nav>
-        <img src={logo} alt='webjoble' className='logo' />
+        <Logo />
       </nav>
       <div className='container page'>
         {/* info */}
@@ -18,11 +20,15 @@ const Landing = () => {
             ducimus expedita, soluta odio id ad nulla temporibus. Vitae fugit
             quaerat nisi qui quos ducimus minus.
           </p>
-          <button className='btn btn-hero'>Login/Register</button>
+          <Link to='/register' className='btn btn-hero'>
+            Login/Register
+          </Link>
         </div>
+
         <img src={main} alt='job hunt' className='img main-img' />
+        <h4 class='suport-uk'>support Ukraine &hearts;</h4>
       </div>
-    </main>
+    </Wrapper>
   );
 };
 

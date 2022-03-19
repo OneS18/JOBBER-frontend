@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 const Wrapper = styled.main`
   nav {
@@ -27,6 +27,16 @@ const Wrapper = styled.main`
   .main-img {
     display: none;
   }
+
+  .suport-uk {
+    width: 290px;
+    font-size: 20px;
+    background: -webkit-linear-gradient(blue 50%, yellow 50%);
+    text-shadow: 1px 1px 1px #000000;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
   @media (min-width: 992px) {
     .page {
       grid-template-columns: 1fr 1fr;
@@ -36,5 +46,5 @@ const Wrapper = styled.main`
       display: block;
     }
   }
-`
-export default Wrapper
+`;
+export default Wrapper;
