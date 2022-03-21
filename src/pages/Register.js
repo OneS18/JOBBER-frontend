@@ -8,62 +8,66 @@ const initialState = {
   email: "",
   password: "",
   isMember: true,
-  showAlert: false,
 };
 
 const Register = () => {
   const [values, setValues] = useState(initialState);
-  const state = useAppContext();
-  console.log(state);
+  const { isLoading, showAlert, displayAlert } = useAppContext();
+
   const toggleMember = () => {
     setValues({ ...values, isMember: !values.isMember });
   };
 
   //global state and use navigate
   const handleChange = (e) => {
-    console.log(e.target);
+    setValues({ ...values, [e.target.name]: e.target.value });
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target);
+    const { name, email, password, isMember } = values;
+    if (!email || !password || (!isMember && !name)) {
+      displayAlert();
+      console.log(values);
+      return;
+    }
   };
 
   return (
-    <Wrapper className='full-page'>
-      <form className='form' onSubmit={onSubmit}>
+    <Wrapper className="full-page">
+      <form className="form" onSubmit={onSubmit}>
         <Logo />
         <h3>{values.isMember ? "Register" : "Login"}</h3>
-        {values.showAlert && <Alert />}
+        {showAlert && <Alert />}
         {/* name input */}
         {values.isMember && (
           <FormRow
-            type='text'
-            name='name'
+            type="text"
+            name="name"
             value={values.name}
             handleChange={handleChange}
           />
         )}
         {/* email input */}
         <FormRow
-          type='email'
-          name='email'
+          type="email"
+          name="email"
           value={values.email}
           handleChange={handleChange}
         />
         {/* password input */}
         <FormRow
-          type='password'
-          name='password'
+          type="password"
+          name="password"
           value={values.password}
           handleChange={handleChange}
         />
-        <button type='submit' className='btn btn-block'>
+        <button type="submit" className="btn btn-block">
           Submit
         </button>
         <p>
           {values.isMember ? "Already a member?" : "Not a member yet"}
-          <button type='button' onClick={toggleMember} className='member-btn'>
+          <button type="button" onClick={toggleMember} className="member-btn">
             {values.isMember ? "Login" : "Register"}
           </button>
         </p>
